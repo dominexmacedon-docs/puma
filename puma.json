@@ -1,6 +1,6 @@
 {
-  "language_name": "LopoLang",
-  "version": "1.0",
+  "language_name": "puma",
+  "version": "1.0.0",
   "description": "Comprehensive specification, keyword reference, AST structure documentation, and 300 code examples designed for AI models to immediately comprehend and code in LopoLang.",
   "keywords": [
     "show", "if", "else", "while", "for", "break", "continue", "func", "return",

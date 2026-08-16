@@ -1,0 +1,1817 @@
+{
+  "language_name": "LopoLang",
+  "version": "1.0",
+  "description": "Comprehensive specification, keyword reference, AST structure documentation, and 300 code examples designed for AI models to immediately comprehend and code in LopoLang.",
+  "keywords": [
+    "show", "if", "else", "while", "for", "break", "continue", "func", "return",
+    "true", "false", "null", "ask", "define", "import", "from", "as", "task",
+    "waitfor", "new", "in", "do", "track", "start", "race", "not", "and", "or",
+    "entity", "self", "inherits", "init", "urlencode", "deploy"
+  ],
+  "syntax_rules": {
+    "semicolons": "Statements in LopoLang should generally be terminated with a semicolon (;). However, expression statements parsed at the statement level mandate semicolons according to the grammar definition.",
+    "comments": "Single line comments start with '#' and block comments are enclosed between '#*' and '*#'."
+  },
+  "examples": [
+    {
+      "id": 1,
+      "category": "Variables",
+      "code": "define x = 10;",
+      "description": "Declares an integer variable using 'define'."
+    },
+    {
+      "id": 2,
+      "category": "Variables",
+      "code": "define name = \"LopoLang\";",
+      "description": "Declares a string variable."
+    },
+    {
+      "id": 3,
+      "category": "Variables",
+      "code": "define pi = 3.14159;",
+      "description": "Declares a floating point number."
+    },
+    {
+      "id": 4,
+      "category": "Variables",
+      "code": "define isActive = true;",
+      "description": "Declares a boolean variable (true)."
+    },
+    {
+      "id": 5,
+      "category": "Variables",
+      "code": "define isComplete = false;",
+      "description": "Declares a boolean variable (false)."
+    },
+    {
+      "id": 6,
+      "category": "Variables",
+      "code": "define emptyValue = null;",
+      "description": "Declares a null variable."
+    },
+    {
+      "id": 7,
+      "category": "Variables",
+      "code": "define count = 0;\ncount += 5;",
+      "description": "Compound assignment operator addition."
+    },
+    {
+      "id": 8,
+      "category": "Variables",
+      "code": "define count = 10;\ncount -= 3;",
+      "description": "Compound assignment operator subtraction."
+    },
+    {
+      "id": 9,
+      "category": "Variables",
+      "code": "define factor = 2;\nfactor *= 4;",
+      "description": "Compound assignment operator multiplication."
+    },
+    {
+      "id": 10,
+      "category": "Variables",
+      "code": "define score = 100;\nscore /= 2;",
+      "description": "Compound assignment operator division."
+    },
+    {
+      "id": 11,
+      "category": "Variables",
+      "code": "define modVal = 10;\nmodVal %= 3;",
+      "description": "Compound assignment operator modulus."
+    },
+    {
+      "id": 12,
+      "category": "Variables",
+      "code": "define a = 5;\ndefine b = 10;\ndefine sum = a + b;",
+      "description": "Basic arithmetic addition."
+    },
+    {
+      "id": 13,
+      "category": "Variables",
+      "code": "define a = 20;\ndefine b = 8;\ndefine diff = a - b;",
+      "description": "Basic arithmetic subtraction."
+    },
+    {
+      "id": 14,
+      "category": "Variables",
+      "code": "define a = 6;\ndefine b = 7;\ndefine prod = a * b;",
+      "description": "Basic arithmetic multiplication."
+    },
+    {
+      "id": 15,
+      "category": "Variables",
+      "code": "define a = 50;\ndefine b = 5;\ndefine quot = a / b;",
+      "description": "Basic arithmetic division."
+    },
+    {
+      "id": 16,
+      "category": "Variables",
+      "code": "define a = 17;\ndefine b = 5;\ndefine rem = a % b;",
+      "description": "Modulus operator usage."
+    },
+    {
+      "id": 17,
+      "category": "Variables",
+      "code": "define x = 5;\nx++;",
+      "description": "Postfix increment."
+    },
+    {
+      "id": 18,
+      "category": "Variables",
+      "code": "define x = 5;\n++x;",
+      "description": "Prefix increment."
+    },
+    {
+      "id": 19,
+      "category": "Variables",
+      "code": "define x = 5;\nx--;",
+      "description": "Postfix decrement."
+    },
+    {
+      "id": 20,
+      "category": "Variables",
+      "code": "define x = 5;\n--x;",
+      "description": "Prefix decrement."
+    },
+    {
+      "id": 21,
+      "category": "I/O",
+      "code": "show(\"Hello, World!\");",
+      "description": "Outputs a message using show."
+    },
+    {
+      "id": 22,
+      "category": "I/O",
+      "code": "define name = ask(\"What is your name?\");\nshow(name);",
+      "description": "Prompts user input via ask and displays it."
+    },
+    {
+      "id": 23,
+      "category": "Control Flow",
+      "code": "define x = 10;\nif (x > 5) {\n  show(\"Greater\");\n}",
+      "description": "Basic if statement."
+    },
+    {
+      "id": 24,
+      "category": "Control Flow",
+      "code": "define x = 3;\nif (x > 5) {\n  show(\"Greater\");\n} else {\n  show(\"Smaller\");\n}",
+      "description": "If-else statement."
+    },
+    {
+      "id": 25,
+      "category": "Control Flow",
+      "code": "define x = 5;\nif (x > 10) {\n  show(\"A\");\n} else if (x > 3) {\n  show(\"B\");\n} else {\n  show(\"C\");\n}",
+      "description": "If-else-if ladder."
+    },
+    {
+      "id": 26,
+      "category": "Control Flow",
+      "code": "define i = 0;\nwhile (i < 5) {\n  show(i);\n  i++;\n}",
+      "description": "While loop execution."
+    },
+    {
+      "id": 27,
+      "category": "Control Flow",
+      "code": "for (define i = 0; i < 3; i++) {\n  show(i);\n}",
+      "description": "Classic for loop."
+    },
+    {
+      "id": 28,
+      "category": "Control Flow",
+      "code": "define fruits = [\"apple\", \"banana\"];\nfor fruit in fruits {\n  show(fruit);\n}",
+      "description": "For-in loop iterating over an array."
+    },
+    {
+      "id": 29,
+      "category": "Control Flow",
+      "code": "define i = 0;\nwhile (true) {\n  if (i == 3) {\n    break;\n  }\n  i++;\n}",
+      "description": "Break statement inside a loop."
+    },
+    {
+      "id": 30,
+      "category": "Control Flow",
+      "code": "define i = 0;\nwhile (i < 5) {\n  i++;\n  if (i == 2) {\n    continue;\n  }\n  show(i);\n}",
+      "description": "Continue statement inside a loop."
+    },
+    {
+      "id": 31,
+      "category": "Functions",
+      "code": "func add(a, b) {\n  return a + b;\n}\ndefine result = add(2, 3);",
+      "description": "Function declaration and invocation."
+    },
+    {
+      "id": 32,
+      "category": "Functions",
+      "code": "define multiply = func(a, b) {\n  return a * b;\n};\nshow(multiply(4, 5));",
+      "description": "Anonymous function expression assigned to a variable."
+    },
+    {
+      "id": 33,
+      "category": "Functions",
+      "code": "define square = x => x * x;\nshow(square(5));",
+      "description": "Arrow function with expression body."
+    },
+    {
+      "id": 34,
+      "category": "Functions",
+      "code": "define greet = name => {\n  define msg = \"Hello \" + name;\n  return msg;\n};\nshow(greet(\"Alice\"));",
+      "description": "Arrow function with block body."
+    },
+    {
+      "id": 35,
+      "category": "Async",
+      "code": "task func fetchData() {\n  define data = waitfor httpFetch(\"https://api.example.com/data\");\n  return data;\n}",
+      "description": "Asynchronous function using task func and waitfor."
+    },
+    {
+      "id": 36,
+      "category": "Entities",
+      "code": "entity Person {\n  init(name, age) {\n    self.name = name;\n    self.age = age;\n  }\n  getInfo() {\n    return self.name;\n  }\n}\ndefine p = new Person(\"Bob\", 30);",
+      "description": "Entity declaration, constructor init, methods, and instantiation."
+    },
+    {
+      "id": 37,
+      "category": "Entities",
+      "code": "entity Animal {\n  makeSound() {\n    return \"Some sound\";\n  }\n}\nentity Dog inherits Animal {\n  makeSound() {\n    return base.makeSound() + \" and Bark\";\n  }\n}\ndefine d = new Dog();\nshow(d.makeSound());",
+      "description": "Entity inheritance and base keyword invocation."
+    },
+    {
+      "id": 38,
+      "category": "Collections",
+      "code": "define numbers = [10, 20, 30, 40];\nshow(numbers[1]);",
+      "description": "Array creation and indexing."
+    },
+    {
+      "id": 39,
+      "category": "Collections",
+      "code": "define matrix = [[1, 2], [3, 4]];\nshow(matrix[0][1]);",
+      "description": "Nested array access."
+    },
+    {
+      "id": 40,
+      "category": "Collections",
+      "code": "define user = {\n  name: \"Alice\",\n  role: \"Admin\"\n};\nshow(user.name);",
+      "description": "Object literal creation and property dot access."
+    },
+    {
+      "id": 41,
+      "category": "Collections",
+      "code": "define user = {\n  name: \"Bob\"\n};\nshow(user[\"name\"]);",
+      "description": "Object property access via indexer."
+    },
+    {
+      "id": 42,
+      "category": "Builtins",
+      "code": "define text = \"Hello\";\nshow(len(text));",
+      "description": "Using len() builtin on a string."
+    },
+    {
+      "id": 43,
+      "category": "Builtins",
+      "code": "define arr = [1, 2, 3];\nshow(len(arr));",
+      "description": "Using len() builtin on an array."
+    },
+    {
+      "id": 44,
+      "category": "Builtins",
+      "code": "define s = lower(\"HELLO\");\nshow(s);",
+      "description": "Converting string to lowercase."
+    },
+    {
+      "id": 45,
+      "category": "Builtins",
+      "code": "define s = upper(\"world\");\nshow(s);",
+      "description": "Converting string to uppercase."
+    },
+    {
+      "id": 46,
+      "category": "Builtins",
+      "code": "define s = trim(\"  padded  \");\nshow(s);",
+      "description": "Trimming whitespace from string."
+    },
+    {
+      "id": 47,
+      "category": "Builtins",
+      "code": "define res = startsWith(\"abcdef\", \"abc\");\nshow(res);",
+      "description": "Checking string prefix."
+    },
+    {
+      "id": 48,
+      "category": "Builtins",
+      "code": "define res = endsWith(\"abcdef\", \"def\");\nshow(res);",
+      "description": "Checking string suffix."
+    },
+    {
+      "id": 49,
+      "category": "Builtins",
+      "code": "define res = includes(\"hello world\", \"world\");\nshow(res);",
+      "description": "Checking substring presence."
+    },
+    {
+      "id": 50,
+      "category": "Builtins",
+      "code": "define s = repeat(\"ha\", 3);\nshow(s);",
+      "description": "Repeating a string."
+    },
+    {
+      "id": 51,
+      "category": "Builtins",
+      "code": "define s = replace(\"foo bar\", \"foo\", \"baz\");\nshow(s);",
+      "description": "Replacing substring occurrence."
+    },
+    {
+      "id": 52,
+      "category": "Builtins",
+      "code": "define t = type([1, 2]);\nshow(t);",
+      "description": "Getting type of an array."
+    },
+    {
+      "id": 53,
+      "category": "Builtins",
+      "code": "define r = random(1, 10);\nshow(r);",
+      "description": "Generating a random integer between min and max."
+    },
+    {
+      "id": 54,
+      "category": "Builtins",
+      "code": "define nums = [1, 2, 3];\npush(nums, 4);\nshow(nums);",
+      "description": "Pushing element onto an array."
+    },
+    {
+      "id": 55,
+      "category": "Builtins",
+      "code": "define nums = [1, 2, 3];\ndefine last = pop(nums);\nshow(last);",
+      "description": "Popping last element from an array."
+    },
+    {
+      "id": 56,
+      "category": "Builtins",
+      "code": "define nums = [1, 2, 3];\ndefine first = shift(nums);\nshow(first);",
+      "description": "Shifting first element from an array."
+    },
+    {
+      "id": 57,
+      "category": "Builtins",
+      "code": "define nums = [2, 3];\nunshift(nums, 1);\nshow(nums);",
+      "description": "Unshifting element to the beginning of an array."
+    },
+    {
+      "id": 58,
+      "category": "Builtins",
+      "code": "define nums = [3, 1, 2];\nsort(nums);\nshow(nums);",
+      "description": "Sorting an array."
+    },
+    {
+      "id": 59,
+      "category": "Builtins",
+      "code": "define nums = [1, 2, 3];\nreverse(nums);\nshow(nums);",
+      "description": "Reversing an array."
+    },
+    {
+      "id": 60,
+      "category": "Builtins",
+      "code": "define arr = unique([1, 2, 2, 3, 3]);\nshow(arr);",
+      "description": "Extracting unique elements from array."
+    },
+    {
+      "id": 61,
+      "category": "Builtins",
+      "code": "define idx = indexOf([10, 20, 30], 20);\nshow(idx);",
+      "description": "Finding index of an element in array."
+    },
+    {
+      "id": 62,
+      "category": "Builtins",
+      "code": "define flat = flatten([[1, 2], [3, [4]]]);\nshow(flat);",
+      "description": "Flattening a nested array."
+    },
+    {
+      "id": 63,
+      "category": "Builtins",
+      "code": "define choice = randomChoice([\"apple\", \"banana\", \"cherry\"]);\nshow(choice);",
+      "description": "Picking a random choice from an array."
+    },
+    {
+      "id": 64,
+      "category": "Builtins",
+      "code": "define obj = { a: 1, b: 2 };\ndefine k = keys(obj);\nshow(k);",
+      "description": "Getting keys of an object."
+    },
+    {
+      "id": 65,
+      "category": "Builtins",
+      "code": "define obj = { a: 1, b: 2 };\ndefine val = values(obj);\nshow(val);",
+      "description": "Getting values of an object."
+    },
+    {
+      "id": 66,
+      "category": "Builtins",
+      "code": "define obj = { a: 1, b: 2 };\ndefine ent = entries(obj);\nshow(ent);",
+      "description": "Getting key-value entries of an object."
+    },
+    {
+      "id": 67,
+      "category": "Builtins",
+      "code": "define merged = merge({a: 1}, {b: 2});\nshow(merged);",
+      "description": "Merging two objects."
+    },
+    {
+      "id": 68,
+      "category": "Builtins",
+      "code": "define inv = invert({a: \"x\", b: \"y\"});\nshow(inv);",
+      "description": "Inverting object keys and values."
+    },
+    {
+      "id": 69,
+      "category": "Builtins",
+      "code": "define emp = isEmpty([]);\nshow(emp);",
+      "description": "Checking if collection or string is empty."
+    },
+    {
+      "id": 70,
+      "category": "Builtins",
+      "code": "define cap = capitalize(\"lopo\");\nshow(cap);",
+      "description": "Capitalizing a string."
+    },
+    {
+      "id": 71,
+      "category": "Builtins",
+      "code": "define rev = reverseStr(\"abcd\");\nshow(rev);",
+      "description": "Reversing a string."
+    },
+    {
+      "id": 72,
+      "category": "Builtins",
+      "code": "define c = clamp(15, 0, 10);\nshow(c);",
+      "description": "Clamping value between min and max bounds."
+    },
+    {
+      "id": 73,
+      "category": "Builtins",
+      "code": "define s = sign(-45);\nshow(s);",
+      "description": "Getting sign of a number."
+    },
+    {
+      "id": 74,
+      "category": "Builtins",
+      "code": "define r = range(5);\nshow(r);",
+      "description": "Generating range array from 0 to 5."
+    },
+    {
+      "id": 75,
+      "category": "Builtins",
+      "code": "define r = range(1, 5);\nshow(r);",
+      "description": "Generating range array with start and end."
+    },
+    {
+      "id": 76,
+      "category": "Builtins",
+      "code": "define r = range(0, 10, 2);\nshow(r);",
+      "description": "Generating range array with step."
+    },
+    {
+      "id": 77,
+      "category": "Builtins",
+      "code": "define p = parseJson(\"{\\\"a\\\": 1}\");\nshow(p.a);",
+      "description": "Parsing a JSON string into an object."
+    },
+    {
+      "id": 78,
+      "category": "Builtins",
+      "code": "define strVal = JSONStringify({x: 10});\nshow(strVal);",
+      "description": "Stringifying an object to JSON."
+    },
+    {
+      "id": 79,
+      "category": "Builtins",
+      "code": "define res = map([1, 2, 3], x => x * 2);\nshow(res);",
+      "description": "Mapping over an array with a callback function."
+    },
+    {
+      "id": 80,
+      "category": "Builtins",
+      "code": "define res = filter([1, 2, 3, 4], x => x % 2 == 0);\nshow(res);",
+      "description": "Filtering an array with a callback predicate."
+    },
+    {
+      "id": 81,
+      "category": "Builtins",
+      "code": "define sum = reduce([1, 2, 3, 4], (acc, x) => acc + x, 0);\nshow(sum);",
+      "description": "Reducing an array to a single value."
+    },
+    {
+      "id": 82,
+      "category": "Server",
+      "code": "define server = createServer();\nserver.get(\"/\", (req, res) => {\n  res.send(\"Home Page\");\n});\nserver.listen(3000);",
+      "description": "Setting up a basic HTTP server with a GET route."
+    },
+    {
+      "id": 83,
+      "category": "Server",
+      "code": "define server = createServer();\nserver.post(\"/api/data\", (req, res) => {\n  res.json({ status: \"received\", body: req.body });\n});\nserver.listen(3000);",
+      "description": "Setting up a POST route returning JSON."
+    },
+    {
+      "id": 84,
+      "category": "Server",
+      "code": "define server = createServer();\nserver.get(\"/user/:id\", (req, res) => {\n  res.send(\"User ID: \" + req.params.id);\n});\nserver.listen(3000);",
+      "description": "Route parameter extraction in HTTP server."
+    },
+    {
+      "id": 85,
+      "category": "Database",
+      "code": "define User = defineModel(\"User\", {\n  username: { type: \"string\", required: true },\n  age: { type: \"number\" }\n});\ndefine u = User.create({ username: \"alice\", age: 25 });\nshow(u.id);",
+      "description": "Defining a model schema and creating a document record."
+    },
+    {
+      "id": 86,
+      "category": "Database",
+      "code": "define User = defineModel(\"User\", {});\ndefine users = User.find({ age: 25 });\nshow(len(users));",
+      "description": "Finding records matching filters in model collection."
+    },
+    {
+      "id": 87,
+      "category": "Database",
+      "code": "define User = defineModel(\"User\", {});\ndefine user = User.findById(\"some-uuid-string\");\nshow(user);",
+      "description": "Finding a record by its unique ID."
+    },
+    {
+      "id": 88,
+      "category": "Database",
+      "code": "define User = defineModel(\"User\", {});\nUser.update(\"some-id\", { age: 26 });",
+      "description": "Updating an existing document record by ID."
+    },
+    {
+      "id": 89,
+      "category": "Database",
+      "code": "define User = defineModel(\"User\", {});\nUser.delete(\"some-id\");",
+      "description": "Deleting a document record by ID."
+    },
+    {
+      "id": 90,
+      "category": "File System",
+      "code": "define content = readFile(\"test.txt\");\nshow(content);",
+      "description": "Reading file contents from disk."
+    },
+    {
+      "id": 91,
+      "category": "File System",
+      "code": "writeFile(\"test.txt\", \"Hello LopoLang!\");",
+      "description": "Writing text content to a file."
+    },
+    {
+      "id": 92,
+      "category": "File System",
+      "code": "appendFile(\"log.txt\", \"New log entry\\n\");",
+      "description": "Appending text content to a file."
+    },
+    {
+      "id": 93,
+      "category": "File System",
+      "code": "define ext = exists(\"test.txt\");\nshow(ext);",
+      "description": "Checking if file or directory exists."
+    },
+    {
+      "id": 94,
+      "category": "File System",
+      "code": "mkdir(\"assets/images\");",
+      "description": "Creating a directory recursively."
+    },
+    {
+      "id": 95,
+      "category": "Network",
+      "code": "task func getData() {\n  define res = waitfor get(\"https://jsonplaceholder.typicode.com/todos/1\");\n  show(res.title);\n}",
+      "description": "Fetching JSON data using get helper function."
+    },
+    {
+      "id": 96,
+      "category": "Network",
+      "code": "task func postData() {\n  define res = waitfor post(\"https://api.example.com/submit\", { name: \"Test\" });\n  show(res.status);\n}",
+      "description": "Posting JSON data using post helper function."
+    },
+    {
+      "id": 97,
+      "category": "Network",
+      "code": "task func customFetch() {\n  define res = waitfor httpFetch(\"https://httpbin.org/get\");\n  show(res.status);\n}",
+      "description": "Using advanced httpFetch client utility."
+    },
+    {
+      "id": 98,
+      "category": "Utilities",
+      "code": "define uid = uuid();\nshow(uid);",
+      "description": "Generating a random v4 UUID string."
+    },
+    {
+      "id": 99,
+      "category": "Utilities",
+      "code": "define ts = timestamp();\nshow(ts);",
+      "description": "Getting current epoch timestamp."
+    },
+    {
+      "id": 100,
+      "category": "Utilities",
+      "code": "task func waitExample() {\n  waitfor sleep(1000);\n  show(\"Waited 1 second\");\n}",
+      "description": "Pausing execution asynchronously with sleep."
+    },
+    {
+      "id": 101,
+      "category": "Variables",
+      "code": "define alpha = 100;\ndefine beta = 200;\ndefine total = alpha + beta;",
+      "description": "Adding two defined numbers."
+    },
+    {
+      "id": 102,
+      "category": "Variables",
+      "code": "define price = 49.99;\ndefine tax = 5.0;\ndefine finalPrice = price + tax;",
+      "description": "Floating point addition."
+    },
+    {
+      "id": 103,
+      "category": "Variables",
+      "code": "define stock = 50;\nstock -= 10;",
+      "description": "Decreasing stock via compound assignment."
+    },
+    {
+      "id": 104,
+      "category": "Variables",
+      "code": "define points = 10;\npoints *= 3;",
+      "description": "Multiplying points via compound assignment."
+    },
+    {
+      "id": 105,
+      "category": "Variables",
+      "code": "define totalItems = 45;\ntotalItems /= 5;",
+      "description": "Dividing total items via compound assignment."
+    },
+    {
+      "id": 106,
+      "category": "Variables",
+      "code": "define codeNum = 42;\ncodeNum %= 5;",
+      "description": "Modulus calculation via compound assignment."
+    },
+    {
+      "id": 107,
+      "category": "Variables",
+      "code": "define textMessage = \"Welcome to \" + \"LopoLang\";\nshow(textMessage);",
+      "description": "String concatenation using the plus operator."
+    },
+    {
+      "id": 108,
+      "category": "Variables",
+      "code": "define flag = not true;\nshow(flag);",
+      "description": "Logical NOT operator usage."
+    },
+    {
+      "id": 109,
+      "category": "Variables",
+      "code": "define check = true and false;\nshow(check);",
+      "description": "Logical AND operator usage."
+    },
+    {
+      "id": 110,
+      "category": "Variables",
+      "code": "define check = true or false;\nshow(check);",
+      "description": "Logical OR operator usage."
+    },
+    {
+      "id": 111,
+      "category": "Control Flow",
+      "code": "define val = 12;\nif (val > 10) {\n  show(\"Greater than 10\");\n}",
+      "description": "Simple condition verification."
+    },
+    {
+      "id": 112,
+      "category": "Control Flow",
+      "code": "define val = 8;\nif (val > 10) {\n  show(\"High\");\n} else {\n  show(\"Low\");\n}",
+      "description": "Alternative execution paths."
+    },
+    {
+      "id": 113,
+      "category": "Control Flow",
+      "code": "define score = 85;\nif (score >= 90) {\n  show(\"A\");\n} else if (score >= 80) {\n  show(\"B\");\n} else {\n  show(\"C\");\n}",
+      "description": "Nested branch grading check."
+    },
+    {
+      "id": 114,
+      "category": "Control Flow",
+      "code": "define n = 3;\nwhile (n > 0) {\n  show(n);\n  n--;\n}",
+      "description": "Countdown using a while loop."
+    },
+    {
+      "id": 115,
+      "category": "Control Flow",
+      "code": "for (define j = 0; j < 5; j++) {\n  show(j);\n}",
+      "description": "Looping through numbers with a traditional for loop."
+    },
+    {
+      "id": 116,
+      "category": "Control Flow",
+      "code": "define colors = [\"red\", \"green\", \"blue\"];\nfor c in colors {\n  show(c);\n}",
+      "description": "Iterating over array elements."
+    },
+    {
+      "id": 117,
+      "category": "Control Flow",
+      "code": "define x = 0;\nwhile (true) {\n  if (x == 2) {\n    break;\n  }\n  x++;\n}",
+      "description": "Breaking out of an infinite loop condition."
+    },
+    {
+      "id": 118,
+      "category": "Control Flow",
+      "code": "define x = 0;\nwhile (x < 4) {\n  x++;\n  if (x == 2) {\n    continue;\n  }\n  show(x);\n}",
+      "description": "Skipping iteration loop using continue."
+    },
+    {
+      "id": 119,
+      "category": "Functions",
+      "code": "func squareNum(n) {\n  return n * n;\n}\nshow(squareNum(6));",
+      "description": "Function computing square value."
+    },
+    {
+      "id": 120,
+      "category": "Functions",
+      "code": "func displayDetails(name, age) {\n  show(name + \" is \" + age + \" years old.\");\n}\ndisplayDetails(\"Alice\", 28);",
+      "description": "Multi-parameter function declaration."
+    },
+    {
+      "id": 121,
+      "category": "Functions",
+      "code": "define cube = x => x * x * x;\nshow(cube(3));",
+      "description": "Concise arrow function."
+    },
+    {
+      "id": 122,
+      "category": "Functions",
+      "code": "define formatName = (first, last) => first + \" \" + last;\nshow(formatName(\"John\", \"Doe\"));",
+      "description": "Arrow function with multiple parameters."
+    },
+    {
+      "id": 123,
+      "category": "Async",
+      "code": "task func getSystemData() {\n  define res = waitfor httpFetch(\"https://api.example.com/status\");\n  return res;\n}",
+      "description": "Asynchronous data retrieval task."
+    },
+    {
+      "id": 124,
+      "category": "Entities",
+      "code": "entity Vehicle {\n  init(brand) {\n    self.brand = brand;\n  }\n  getBrand() {\n    return self.brand;\n  }\n}\ndefine car = new Vehicle(\"Toyota\");\nshow(car.getBrand());",
+      "description": "Basic object-oriented class structure using entities."
+    },
+    {
+      "id": 125,
+      "category": "Entities",
+      "code": "entity Shape {\n  getArea() {\n    return 0;\n  }\n}\nentity Square inherits Shape {\n  init(side) {\n    self.side = side;\n  }\n  getArea() {\n    return self.side * self.side;\n  }\n}\ndefine sq = new Square(4);\nshow(sq.getArea());",
+      "description": "Inheritance model overriding methods."
+    },
+    {
+      "id": 126,
+      "category": "Collections",
+      "code": "define items = [100, 200, 300];\nshow(items[2]);",
+      "description": "Array item lookup."
+    },
+    {
+      "id": 127,
+      "category": "Collections",
+      "code": "define config = {\n  host: \"localhost\",\n  port: 8080\n};\nshow(config.host);",
+      "description": "Dictionary configuration lookups."
+    },
+    {
+      "id": 128,
+      "category": "Builtins",
+      "code": "define lengthVal = len(\"LopoLang\");\nshow(lengthVal);",
+      "description": "String length builtin calculation."
+    },
+    {
+      "id": 129,
+      "category": "Builtins",
+      "code": "define lowercaseStr = lower(\"TEST\");\nshow(lowercaseStr);",
+      "description": "Lowercase conversion builtin."
+    },
+    {
+      "id": 130,
+      "category": "Builtins",
+      "code": "define uppercaseStr = upper(\"sample\");\nshow(uppercaseStr);",
+      "description": "Uppercase conversion builtin."
+    },
+    {
+      "id": 131,
+      "category": "Builtins",
+      "code": "define cleanStr = trim(\"   spaced text   \");\nshow(cleanStr);",
+      "description": "Trimming string whitespace."
+    },
+    {
+      "id": 132,
+      "category": "Builtins",
+      "code": "define checkPrefix = startsWith(\"filename.txt\", \"file\");\nshow(checkPrefix);",
+      "description": "Prefix verification."
+    },
+    {
+      "id": 133,
+      "category": "Builtins",
+      "code": "define checkSuffix = endsWith(\"filename.txt\", \".txt\");\nshow(checkSuffix);",
+      "description": "Suffix verification."
+    },
+    {
+      "id": 134,
+      "category": "Builtins",
+      "code": "define checkSub = includes(\"database connection\", \"base\");\nshow(checkSub);",
+      "description": "Substring checks."
+    },
+    {
+      "id": 135,
+      "category": "Builtins",
+      "code": "define repeated = repeat(\"abc\", 2);\nshow(repeated);",
+      "description": "String repetition."
+    },
+    {
+      "id": 136,
+      "category": "Builtins",
+      "code": "define updatedStr = replace(\"hello world\", \"world\", \"universe\");\nshow(updatedStr);",
+      "description": "String replacement utility."
+    },
+    {
+      "id": 137,
+      "category": "Builtins",
+      "code": "define itemType = type(true);\nshow(itemType);",
+      "description": "Type verification utility."
+    },
+    {
+      "id": 138,
+      "category": "Builtins",
+      "code": "define randNum = random(10, 20);\nshow(randNum);",
+      "description": "Random number generation within specific boundaries."
+    },
+    {
+      "id": 139,
+      "category": "Builtins",
+      "code": "define listVal = [5, 10];\npush(listVal, 15);\nshow(listVal);",
+      "description": "Pushing elements onto collection arrays."
+    },
+    {
+      "id": 140,
+      "category": "Builtins",
+      "code": "define listVal = [1, 2, 3];\ndefine popped = pop(listVal);\nshow(popped);",
+      "description": "Popping elements from array bounds."
+    },
+    {
+      "id": 141,
+      "category": "Builtins",
+      "code": "define listVal = [10, 20, 30];\ndefine shifted = shift(listVal);\nshow(shifted);",
+      "description": "Shifting elements from array."
+    },
+    {
+      "id": 142,
+      "category": "Builtins",
+      "code": "define listVal = [20, 30];\nunshift(listVal, 10);\nshow(listVal);",
+      "description": "Unshifting elements into array."
+    },
+    {
+      "id": 143,
+      "category": "Builtins",
+      "code": "define listVal = [4, 1, 3, 2];\nsort(listVal);\nshow(listVal);",
+      "description": "Sorting an array numerically/alphabetically."
+    },
+    {
+      "id": 144,
+      "category": "Builtins",
+      "code": "define listVal = [1, 2, 3];\nreverse(listVal);\nshow(listVal);",
+      "description": "Reversing items inside an array."
+    },
+    {
+      "id": 145,
+      "category": "Builtins",
+      "code": "define uniqueArr = unique([1, 1, 2, 2, 3]);\nshow(uniqueArr);",
+      "description": "Filtering unique collection values."
+    },
+    {
+      "id": 146,
+      "category": "Builtins",
+      "code": "define posIdx = indexOf([\"a\", \"b\", \"c\"], \"b\");\nshow(posIdx);",
+      "description": "Finding index of target elements."
+    },
+    {
+      "id": 147,
+      "category": "Builtins",
+      "code": "define flatArr = flatten([[1], [2, [3]]]);\nshow(flatArr);",
+      "description": "Flattening multidimensional arrays."
+    },
+    {
+      "id": 148,
+      "category": "Builtins",
+      "code": "define choiceVal = randomChoice([\"up\", \"down\", \"left\", \"right\"]);\nshow(choiceVal);",
+      "description": "Random choice selection from array."
+    },
+    {
+      "id": 149,
+      "category": "Builtins",
+      "code": "define objectKeys = keys({ name: \"Test\", id: 1 });\nshow(objectKeys);",
+      "description": "Extracting object keys."
+    },
+    {
+      "id": 150,
+      "category": "Builtins",
+      "code": "define objectVals = values({ name: \"Test\", id: 1 });\nshow(objectVals);",
+      "description": "Extracting object values."
+    },
+    {
+      "id": 151,
+      "category": "Builtins",
+      "code": "define objectEntries = entries({ a: 1 });\nshow(objectEntries);",
+      "description": "Extracting object key-value pair entries."
+    },
+    {
+      "id": 152,
+      "category": "Builtins",
+      "code": "define mergedObj = merge({ a: 1 }, { b: 2 });\nshow(mergedObj);",
+      "description": "Merging object records."
+    },
+    {
+      "id": 153,
+      "category": "Builtins",
+      "code": "define invertedObj = invert({ a: \"key\" });\nshow(invertedObj);",
+      "description": "Inverting keys and values of an object."
+    },
+    {
+      "id": 154,
+      "category": "Builtins",
+      "code": "define emptyCheck = isEmpty([]);\nshow(emptyCheck);",
+      "description": "Checking for empty structures."
+    },
+    {
+      "id": 155,
+      "category": "Builtins",
+      "code": "define capStr = capitalize(\"javascript\");\nshow(capStr);",
+      "description": "Capitalizing string text."
+    },
+    {
+      "id": 156,
+      "category": "Builtins",
+      "code": "define revString = reverseStr(\"hello\");\nshow(revString);",
+      "description": "Reversing characters in a string."
+    },
+    {
+      "id": 157,
+      "category": "Builtins",
+      "code": "define clampedVal = clamp(50, 0, 100);\nshow(clampedVal);",
+      "description": "Clamping value within boundaries."
+    },
+    {
+      "id": 158,
+      "category": "Builtins",
+      "code": "define signVal = sign(-12);\nshow(signVal);",
+      "description": "Evaluating numerical sign."
+    },
+    {
+      "id": 159,
+      "category": "Builtins",
+      "code": "define rangeArr = range(4);\nshow(rangeArr);",
+      "description": "Generating sequential range values."
+    },
+    {
+      "id": 160,
+      "category": "Builtins",
+      "code": "define jsonParsed = parseJson(\"{\\\"status\\\": \\\"ok\\\"}\");\nshow(jsonParsed.status);",
+      "description": "Parsing serialized JSON strings."
+    },
+    {
+      "id": 161,
+      "category": "Builtins",
+      "code": "define jsonStr = JSONStringify({ active: true });\nshow(jsonStr);",
+      "description": "Serializing object data into JSON."
+    },
+    {
+      "id": 162,
+      "category": "Builtins",
+      "code": "define mapped = map([1, 2, 3], x => x + 10);\nshow(mapped);",
+      "description": "Mapping transformer over array values."
+    },
+    {
+      "id": 163,
+      "category": "Builtins",
+      "code": "define filtered = filter([10, 15, 20], x => x > 12);\nshow(filtered);",
+      "description": "Filtering items based on conditions."
+    },
+    {
+      "id": 164,
+      "category": "Builtins",
+      "code": "define reduced = reduce([1, 2, 3], (acc, x) => acc + x, 0);\nshow(reduced);",
+      "description": "Accumulating values from an array."
+    },
+    {
+      "id": 165,
+      "category": "Server",
+      "code": "define app = createServer();\napp.get(\"/status\", (req, res) => {\n  res.send(\"Running OK\");\n});\napp.listen(8080);",
+      "description": "Configuring standard health check endpoint."
+    },
+    {
+      "id": 166,
+      "category": "Server",
+      "code": "define app = createServer();\napp.post(\"/users\", (req, res) => {\n  res.json({ created: true });\n});\napp.listen(8080);",
+      "description": "Configuring user creation route handler."
+    },
+    {
+      "id": 167,
+      "category": "Database",
+      "code": "define Item = defineModel(\"Item\", {\n  title: { type: \"string\", required: true }\n});\ndefine item = Item.create({ title: \"Book\" });\nshow(item.id);",
+      "description": "Creating records using database schemas."
+    },
+    {
+      "id": 168,
+      "category": "Database",
+      "code": "define Item = defineModel(\"Item\", {});\ndefine records = Item.find();\nshow(len(records));",
+      "description": "Finding model record sets."
+    },
+    {
+      "id": 169,
+      "category": "Database",
+      "code": "define Item = defineModel(\"Item\", {});\ndefine rec = Item.findById(\"123-abc\");\nshow(rec);",
+      "description": "Finding document records via ID lookup."
+    },
+    {
+      "id": 170,
+      "category": "File System",
+      "code": "define textData = readFile(\"config.json\");\nshow(textData);",
+      "description": "Reading text configuration files."
+    },
+    {
+      "id": 171,
+      "category": "File System",
+      "code": "writeFile(\"output.txt\", \"Generated content\");",
+      "description": "Writing file output payloads."
+    },
+    {
+      "id": 172,
+      "category": "File System",
+      "code": "appendFile(\"output.txt\", \"\\nAppended row\");",
+      "description": "Appending data to file storage."
+    },
+    {
+      "id": 173,
+      "category": "File System",
+      "code": "define status = exists(\"output.txt\");\nshow(status);",
+      "description": "Validating file existence."
+    },
+    {
+      "id": 174,
+      "category": "File System",
+      "code": "mkdir(\"logs\");",
+      "description": "Creating directory paths."
+    },
+    {
+      "id": 175,
+      "category": "Network",
+      "code": "task func fetchExternal() {\n  define res = waitfor get(\"https://api.github.com\");\n  show(res);\n}",
+      "description": "Async GET requests execution."
+    },
+    {
+      "id": 176,
+      "category": "Utilities",
+      "code": "define identifierToken = uuid();\nshow(identifierToken);",
+      "description": "UUID token generation."
+    },
+    {
+      "id": 177,
+      "category": "Utilities",
+      "code": "define epochTime = timestamp();\nshow(epochTime);",
+      "description": "Timestamp retrieval."
+    },
+    {
+      "id": 178,
+      "category": "Utilities",
+      "code": "task func delayProcess() {\n  waitfor sleep(500);\n  show(\"Awake\");\n}",
+      "description": "Async sleeping execution."
+    },
+    {
+      "id": 179,
+      "category": "Variables",
+      "code": "define baseValue = 5;\ndefine multiplier = 4;\ndefine resultVal = baseValue * multiplier;",
+      "description": "Arithmetic calculation sequence."
+    },
+    {
+      "id": 180,
+      "category": "Variables",
+      "code": "define quotientVal = 100 / 4;\nshow(quotientVal);",
+      "description": "Direct division calculation output."
+    },
+    {
+      "id": 181,
+      "category": "Variables",
+      "code": "define remainderVal = 15 % 4;\nshow(remainderVal);",
+      "description": "Direct modulus calculation output."
+    },
+    {
+      "id": 182,
+      "category": "Variables",
+      "code": "define valInc = 10;\nvalInc++;\nshow(valInc);",
+      "description": "Postfix variable increment."
+    },
+    {
+      "id": 183,
+      "category": "Variables",
+      "code": "define valDec = 10;\nvalDec--;\nshow(valDec);",
+      "description": "Postfix variable decrement."
+    },
+    {
+      "id": 184,
+      "category": "I/O",
+      "code": "show(\"System starting up...\");",
+      "description": "Startup logging notification."
+    },
+    {
+      "id": 185,
+      "category": "Control Flow",
+      "code": "define mode = \"admin\";\nif (mode == \"admin\") {\n  show(\"Access granted\");\n} else {\n  show(\"Access denied\");\n}",
+      "description": "Conditional string validation block."
+    },
+    {
+      "id": 186,
+      "category": "Control Flow",
+      "code": "define counter = 0;\nwhile (counter < 2) {\n  show(\"Loop iteration\");\n  counter++;\n}",
+      "description": "Basic loop repetition block."
+    },
+    {
+      "id": 187,
+      "category": "Control Flow",
+      "code": "for (define idxNum = 0; idxNum < 2; idxNum++) {\n  show(idxNum);\n}",
+      "description": "Sequential loop iteration reporting."
+    },
+    {
+      "id": 188,
+      "category": "Functions",
+      "code": "func calculateSum(x, y, z) {\n  return x + y + z;\n}\nshow(calculateSum(1, 2, 3));",
+      "description": "Three parameter mathematical function."
+    },
+    {
+      "id": 189,
+      "category": "Functions",
+      "code": "define doubleVal = n => n * 2;\nshow(doubleVal(10));",
+      "description": "Doubling number via arrow function."
+    },
+    {
+      "id": 190,
+      "category": "Entities",
+      "code": "entity Account {\n  init(user) {\n    self.user = user;\n  }\n  getUser() {\n    return self.user;\n  }\n}\ndefine acc = new Account(\"admin_user\");\nshow(acc.getUser());",
+      "description": "Entity model instantiation and method access."
+    },
+    {
+      "id": 191,
+      "category": "Collections",
+      "code": "define matrixData = [[10, 20], [30, 40]];\nshow(matrixData[1][0]);",
+      "description": "Two-dimensional array indexing."
+    },
+    {
+      "id": 192,
+      "category": "Builtins",
+      "code": "define textSnippet = \"LopoLang Engine\";\nshow(includes(textSnippet, \"Engine\"));",
+      "description": "Checking text snippets for inclusions."
+    },
+    {
+      "id": 193,
+      "category": "Builtins",
+      "code": "define numArray = [10, 20, 30];\npush(numArray, 40);\nshow(len(numArray));",
+      "description": "Pushing and verifying array lengths."
+    },
+    {
+      "id": 194,
+      "category": "Builtins",
+      "code": "define objRecord = { keyName: \"valueData\" };\nshow(keys(objRecord));",
+      "description": "Inspecting record keys."
+    },
+    {
+      "id": 195,
+      "category": "Server",
+      "code": "define srv = createServer();\nsrv.get(\"/ping\", (req, res) => {\n  res.send(\"pong\");\n});\nsrv.listen(5000);",
+      "description": "Ping endpoint server implementation."
+    },
+    {
+      "id": 196,
+      "category": "Database",
+      "code": "define RecordModel = defineModel(\"Record\", { tag: { type: \"string\" } });\nRecordModel.delete(\"sample-id\");",
+      "description": "Database document deletion syntax."
+    },
+    {
+      "id": 197,
+      "category": "File System",
+      "code": "define filePresent = exists(\"settings.json\");\nshow(filePresent);",
+      "description": "Checking settings existence."
+    },
+    {
+      "id": 198,
+      "category": "Utilities",
+      "code": "define transactionId = uuid();\nshow(transactionId);",
+      "description": "Transaction identification string generation."
+    },
+    {
+      "id": 199,
+      "category": "Variables",
+      "code": "define statementCheck = true;\nif (statementCheck) {\n  show(\"Verified\");\n}",
+      "description": "Boolean evaluation flag check."
+    },
+    {
+      "id": 200,
+      "category": "Utilities",
+      "code": "show(\"Specification examples successfully listed up to entry 200.\");",
+      "description": "Completion log trace marker."
+    },
+    {
+      "id": 201,
+      "category": "Variables",
+      "code": "define valA = 500;\ndefine valB = 250;\ndefine differenceVal = valA - valB;",
+      "description": "Computing variable subtraction difference."
+    },
+    {
+      "id": 202,
+      "category": "Variables",
+      "code": "define rate = 1.25;\ndefine hours = 40;\ndefine pay = rate * hours;",
+      "description": "Multiplication expression with decimal numbers."
+    },
+    {
+      "id": 203,
+      "category": "Variables",
+      "code": "define units = 100;\nunits += 25;",
+      "description": "Adding value using compound assignment."
+    },
+    {
+      "id": 204,
+      "category": "Variables",
+      "code": "define scoreVal = 50;\nscoreVal -= 5;",
+      "description": "Subtracting value using compound assignment."
+    },
+    {
+      "id": 205,
+      "category": "Variables",
+      "code": "define baseFactor = 3;\nbaseFactor *= 10;",
+      "description": "Multiplying value using compound assignment."
+    },
+    {
+      "id": 206,
+      "category": "Variables",
+      "code": "define poolSize = 200;\npoolSize /= 4;",
+      "description": "Dividing value using compound assignment."
+    },
+    {
+      "id": 207,
+      "category": "Variables",
+      "code": "define modulusVal = 25;\nmodulusVal %= 7;",
+      "description": "Calculating remainder using compound assignment."
+    },
+    {
+      "id": 208,
+      "category": "Variables",
+      "code": "define firstName = \"Jane\";\ndefine lastName = \"Doe\";\ndefine fullName = firstName + \" \" + lastName;",
+      "description": "Combining strings together."
+    },
+    {
+      "id": 209,
+      "category": "Variables",
+      "code": "define conditionFlag = not false;\nshow(conditionFlag);",
+      "description": "Evaluating inverse boolean conditions."
+    },
+    {
+      "id": 210,
+      "category": "Variables",
+      "code": "define checkBoth = (5 > 3) and (2 < 4);\nshow(checkBoth);",
+      "description": "Evaluating dual expression logical AND."
+    },
+    {
+      "id": 211,
+      "category": "Control Flow",
+      "code": "define targetNumber = 42;\nif (targetNumber == 42) {\n  show(\"Matched target\");\n}",
+      "description": "Strict comparison matching verification."
+    },
+    {
+      "id": 212,
+      "category": "Control Flow",
+      "code": "define accessLevel = 1;\nif (accessLevel == 0) {\n  show(\"Guest\");\n} else {\n  show(\"Member\");\n}",
+      "description": "Binary choice branching logic."
+    },
+    {
+      "id": 213,
+      "category": "Control Flow",
+      "code": "define temperature = 22;\nif (temperature > 30) {\n  show(\"Hot\");\n} else if (temperature >= 20) {\n  show(\"Warm\");\n} else {\n  show(\"Cold\");\n}",
+      "description": "Multi-tier temperature categorization."
+    },
+    {
+      "id": 214,
+      "category": "Control Flow",
+      "code": "define limit = 3;\nwhile (limit > 0) {\n  show(\"Running loop...\");\n  limit--;\n}",
+      "description": "Executing structured loop steps."
+    },
+    {
+      "id": 215,
+      "category": "Control Flow",
+      "code": "for (define k = 1; k <= 3; k++) {\n  show(k);\n}",
+      "description": "Iterating through range bounds with standard for loop."
+    },
+    {
+      "id": 216,
+      "category": "Control Flow",
+      "code": "define tags = [\"dev\", \"staging\", \"prod\"];\nfor tag in tags {\n  show(tag);\n}",
+      "description": "Looping over environment list strings."
+    },
+    {
+      "id": 217,
+      "category": "Control Flow",
+      "code": "define iVal = 0;\nwhile (true) {\n  if (iVal == 1) {\n    break;\n  }\n  iVal++;\n}",
+      "description": "Breaking execution inside loop."
+    },
+    {
+      "id": 218,
+      "category": "Control Flow",
+      "code": "define stepIndex = 0;\nwhile (stepIndex < 3) {\n  stepIndex++;\n  if (stepIndex == 2) {\n    continue;\n  }\n  show(stepIndex);\n}",
+      "description": "Continuing loop while avoiding target values."
+    },
+    {
+      "id": 219,
+      "category": "Functions",
+      "code": "func calculateRectangleArea(width, height) {\n  return width * height;\n}\nshow(calculateRectangleArea(5, 10));",
+      "description": "Function calculating rectangle dimensions."
+    },
+    {
+      "id": 220,
+      "category": "Functions",
+      "code": "define negate = val => not val;\nshow(negate(true));",
+      "description": "Arrow function negating boolean flags."
+    },
+    {
+      "id": 221,
+      "category": "Functions",
+      "code": "define computeProduct = (x, y) => {\n  define res = x * y;\n  return res;\n};\nshow(computeProduct(3, 7));",
+      "description": "Block body arrow function calculation."
+    },
+    {
+      "id": 222,
+      "category": "Async",
+      "code": "task func fetchConfigData() {\n  define info = waitfor httpFetch(\"https://api.example.com/config\");\n  return info;\n}",
+      "description": "Asynchronous network configuration loader."
+    },
+    {
+      "id": 223,
+      "category": "Entities",
+      "code": "entity Rectangle {\n  init(w, h) {\n    self.w = w;\n    self.h = h;\n  }\n  getArea() {\n    return self.w * self.h;\n  }\n}\ndefine rect = new Rectangle(4, 5);\nshow(rect.getArea());",
+      "description": "Entity definition handling geometric calculations."
+    },
+    {
+      "id": 224,
+      "category": "Entities",
+      "code": "entity Widget {\n  renderWidget() {\n    return \"Base Widget\";\n  }\n}\nentity Button inherits Widget {\n  renderWidget() {\n    return base.renderWidget() + \" -> Clickable Button\";\n  }\n}\ndefine btn = new Button();\nshow(btn.renderWidget());",
+      "description": "Inheriting behavior from base entity definitions."
+    },
+    {
+      "id": 225,
+      "category": "Collections",
+      "code": "define collectionList = [10, 20, 30, 40, 50];\nshow(collectionList[3]);",
+      "description": "Accessing specific index values within lists."
+    },
+    {
+      "id": 226,
+      "category": "Collections",
+      "code": "define settings = {\n  theme: \"dark\",\n  notifications: true\n};\nshow(settings.theme);",
+      "description": "Reading object configuration settings properties."
+    },
+    {
+      "id": 227,
+      "category": "Builtins",
+      "code": "define sentence = \"Learning LopoLang\";\nshow(len(sentence));",
+      "description": "Checking text string sizing parameters."
+    },
+    {
+      "id": 228,
+      "category": "Builtins",
+      "code": "define lowText = lower(\"SYSTEM_READY\");\nshow(lowText);",
+      "description": "Formatting text to lowercase format."
+    },
+    {
+      "id": 229,
+      "category": "Builtins",
+      "code": "define upText = upper(\"system_ready\");\nshow(upText);",
+      "description": "Formatting text to uppercase format."
+    },
+    {
+      "id": 230,
+      "category": "Builtins",
+      "code": "define paddedText = trim(\"  text block  \");\nshow(paddedText);",
+      "description": "Trimming boundary spacing from strings."
+    },
+    {
+      "id": 231,
+      "category": "Builtins",
+      "code": "define hasPrefix = startsWith(\"https://site.com\", \"https\");\nshow(hasPrefix);",
+      "description": "Checking protocol string prefixes."
+    },
+    {
+      "id": 232,
+      "category": "Builtins",
+      "code": "define hasSuffix = endsWith(\"archive.zip\", \".zip\");\nshow(hasSuffix);",
+      "description": "Checking file format extensions."
+    },
+    {
+      "id": 233,
+      "category": "Builtins",
+      "code": "define containsWord = includes(\"quick brown fox\", \"brown\");\nshow(containsWord);",
+      "description": "Verifying text contents."
+    },
+    {
+      "id": 234,
+      "category": "Builtins",
+      "code": "define padStr = repeat(\"0\", 4);\nshow(padStr);",
+      "description": "Padding strings through repetition."
+    },
+    {
+      "id": 235,
+      "category": "Builtins",
+      "code": "define substituted = replace(\"cat dog cat\", \"cat\", \"bat\");\nshow(substituted);",
+      "description": "Replacing multiple substring occurrences."
+    },
+    {
+      "id": 236,
+      "category": "Builtins",
+      "code": "define valueType = type(3.14);\nshow(valueType);",
+      "description": "Verifying floating-point types."
+    },
+    {
+      "id": 237,
+      "category": "Builtins",
+      "code": "define randomNumber = random(100);\nshow(randomNumber);",
+      "description": "Generating single bound random values."
+    },
+    {
+      "id": 238,
+      "category": "Builtins",
+      "code": "define dynamicArray = [1, 2];\npush(dynamicArray, 3);\nshow(dynamicArray);",
+      "description": "Dynamic array expansion operations."
+    },
+    {
+      "id": 239,
+      "category": "Builtins",
+      "code": "define sourceArray = [10, 20, 30];\ndefine poppedItem = pop(sourceArray);\nshow(poppedItem);",
+      "description": "Extracting trailing values from arrays."
+    },
+    {
+      "id": 240,
+      "category": "Builtins",
+      "code": "define queueList = [1, 2, 3];\ndefine shiftedItem = shift(queueList);\nshow(shiftedItem);",
+      "description": "Processing queue elements via shift."
+    },
+    {
+      "id": 241,
+      "category": "Builtins",
+      "code": "define queueList = [2, 3];\nunshift(queueList, 1);\nshow(queueList);",
+      "description": "Injecting items at the start of lists."
+    },
+    {
+      "id": 242,
+      "category": "Builtins",
+      "code": "define unsortedList = [9, 3, 5, 1];\nsort(unsortedList);\nshow(unsortedList);",
+      "description": "Sorting raw list elements."
+    },
+    {
+      "id": 243,
+      "category": "Builtins",
+      "code": "define sequenceList = [1, 2, 3, 4];\nreverse(sequenceList);\nshow(sequenceList);",
+      "description": "Reversing sequence orders."
+    },
+    {
+      "id": 244,
+      "category": "Builtins",
+      "code": "define distinctItems = unique([5, 5, 6, 7, 7]);\nshow(distinctItems);",
+      "description": "Extracting distinct element groups."
+    },
+    {
+      "id": 245,
+      "category": "Builtins",
+      "code": "define positionIndex = indexOf([\"apple\", \"orange\"], \"orange\");\nshow(positionIndex);",
+      "description": "Finding target indices in lists."
+    },
+    {
+      "id": 246,
+      "category": "Builtins",
+      "code": "define nestedList = [[1, 2], [3, [4]]];\ndefine flattenedList = flatten(nestedList);\nshow(flattenedList);",
+      "description": "Flattening nested lists completely."
+    },
+    {
+      "id": 247,
+      "category": "Builtins",
+      "code": "define option = randomChoice([\"primary\", \"backup\"]);\nshow(option);",
+      "description": "Choosing items randomly from collections."
+    },
+    {
+      "id": 248,
+      "category": "Builtins",
+      "code": "define mapObj = { keyOne: 100, keyTwo: 200 };\nshow(keys(mapObj));",
+      "description": "Retrieving dictionary keys list."
+    },
+    {
+      "id": 249,
+      "category": "Builtins",
+      "code": "define mapObj = { keyOne: 100, keyTwo: 200 };\nshow(values(mapObj));",
+      "description": "Retrieving dictionary values list."
+    },
+    {
+      "id": 250,
+      "category": "Builtins",
+      "code": "define mapObj = { x: 10 };\nshow(entries(mapObj));",
+      "description": "Retrieving dictionary entry arrays."
+    },
+    {
+      "id": 251,
+      "category": "Builtins",
+      "code": "define combinedObj = merge({ a: 1 }, { b: 2 });\nshow(combinedObj);",
+      "description": "Combining two dictionaries together."
+    },
+    {
+      "id": 252,
+      "category": "Builtins",
+      "code": "define invertedMapping = invert({ role: \"admin\" });\nshow(invertedMapping);",
+      "description": "Inverting dictionary keys and values."
+    },
+    {
+      "id": 253,
+      "category": "Builtins",
+      "code": "define checkEmptyList = isEmpty([1, 2]);\nshow(checkEmptyList);",
+      "description": "Validating non-empty container statuses."
+    },
+    {
+      "id": 254,
+      "category": "Builtins",
+      "code": "define formattedCap = capitalize(\"framework\");\nshow(formattedCap);",
+      "description": "Capitalizing string headers."
+    },
+    {
+      "id": 255,
+      "category": "Builtins",
+      "code": "define reversedText = reverseStr(\"tokens\");\nshow(reversedText);",
+      "description": "Reversing string character ordering."
+    },
+    {
+      "id": 256,
+      "category": "Builtins",
+      "code": "define boundVal = clamp(150, 0, 100);\nshow(boundVal);",
+      "description": "Restricting values within upper limits."
+    },
+    {
+      "id": 257,
+      "category": "Builtins",
+      "code": "define signNumber = sign(50);\nshow(signNumber);",
+      "description": "Getting sign indicator for positive values."
+    },
+    {
+      "id": 258,
+      "category": "Builtins",
+      "code": "define seqRange = range(1, 4);\nshow(seqRange);",
+      "description": "Generating range arrays with start and end specs."
+    },
+    {
+      "id": 259,
+      "category": "Builtins",
+      "code": "define parsedObj = parseJson(\"{\\\"name\\\": \\\"Lopo\\\"\});\nshow(parsedObj.name);",
+      "description": "Parsing JSON text payloads to objects."
+    },
+    {
+      "id": 260,
+      "category": "Builtins",
+      "code": "define stringifiedJson = JSONStringify({ code: 200 });\nshow(stringifiedJson);",
+      "description": "Serializing object records to JSON strings."
+    },
+    {
+      "id": 261,
+      "category": "Builtins",
+      "code": "define mappedArray = map([2, 4, 6], x => x / 2);\nshow(mappedArray);",
+      "description": "Transforming array elements via map."
+    },
+    {
+      "id": 262,
+      "category": "Builtins",
+      "code": "define filteredArray = filter([5, 10, 15], x => x >= 10);\nshow(filteredArray);",
+      "description": "Filtering items meeting conditions via filter."
+    },
+    {
+      "id": 263,
+      "category": "Builtins",
+      "code": "define reducedValue = reduce([2, 4, 6], (acc, x) => acc * x, 1);\nshow(reducedValue);",
+      "description": "Reducing values multiplicatively."
+    },
+    {
+      "id": 264,
+      "category": "Server",
+      "code": "define webApp = createServer();\nwebApp.get(\"/info\", (req, res) => {\n  res.send(\"System Information Endpoint\");\n});\nwebApp.listen(4000);",
+      "description": "Setting up informational web service routes."
+    },
+    {
+      "id": 265,
+      "category": "Server",
+      "code": "define webApp = createServer();\nwebApp.post(\"/submit\", (req, res) => {\n  res.json({ receivedData: req.body });\n});\nwebApp.listen(4000);",
+      "description": "Handling payload submissions via POST routes."
+    },
+    {
+      "id": 266,
+      "category": "Database",
+      "code": "define Product = defineModel(\"Product\", {\n  name: { type: \"string\", required: true },\n  price: { type: \"number\" }\n});\ndefine pObj = Product.create({ name: \"Laptop\", price: 999.99 });\nshow(pObj.name);",
+      "description": "Persisting model entity records with validation fields."
+    },
+    {
+      "id": 267,
+      "category": "Database",
+      "code": "define Product = defineModel(\"Product\", {});\ndefine foundItems = Product.find({ price: 999.99 });\nshow(len(foundItems));",
+      "description": "Querying model records using filter parameters."
+    },
+    {
+      "id": 268,
+      "category": "Database",
+      "code": "define Product = defineModel(\"Product\", {});\ndefine singleItem = Product.findById(\"uuid-key\");\nshow(singleItem);",
+      "description": "Retrieving document record elements via identifiers."
+    },
+    {
+      "id": 269,
+      "category": "Database",
+      "code": "define Product = defineModel(\"Product\", {});\nProduct.update(\"uuid-key\", { price: 899.99 });",
+      "description": "Modifying existing document records by identifier."
+    },
+    {
+      "id": 270,
+      "category": "File System",
+      "code": "define fileContent = readFile(\"notes.txt\");\nshow(fileContent);",
+      "description": "Reading text data from standard files."
+    },
+    {
+      "id": 271,
+      "category": "File System",
+      "code": "writeFile(\"notes.txt\", \"Initial note line.\");",
+      "description": "Writing fresh contents to target files."
+    },
+    {
+      "id": 272,
+      "category": "File System",
+      "code": "appendFile(\"notes.txt\", \"\\nAdditional note line.\");",
+      "description": "Appending records to existing files safely."
+    },
+    {
+      "id": 273,
+      "category": "File System",
+      "code": "define checkDirExists = exists(\"notes.txt\");\nshow(checkDirExists);",
+      "description": "Checking file presence before execution."
+    },
+    {
+      "id": 274,
+      "category": "File System",
+      "code": "mkdir(\"exports/data\");",
+      "description": "Creating directory trees recursively."
+    },
+    {
+      "id": 275,
+      "category": "Network",
+      "code": "task func queryEndpoint() {\n  define responsePayload = waitfor get(\"https://api.example.com/health\");\n  show(responsePayload);\n}",
+      "description": "Performing network health checks asynchronously."
+    },
+    {
+      "id": 276,
+      "category": "Network",
+      "code": "task func sendPayload() {\n  define responsePayload = waitfor post(\"https://api.example.com/push\", { status: \"active\" });\n  show(responsePayload);\n}",
+      "description": "Posting payload data asynchronously via helper functions."
+    },
+    {
+      "id": 277,
+      "category": "Utilities",
+      "code": "define uniqueToken = uuid();\nshow(uniqueToken);",
+      "description": "Generating unique string tokens."
+    },
+    {
+      "id": 278,
+      "category": "Utilities",
+      "code": "define currentEpoch = timestamp();\nshow(currentEpoch);",
+      "description": "Capturing current system timestamps."
+    },
+    {
+      "id": 279,
+      "category": "Utilities",
+      "code": "task func waitRoutine() {\n  waitfor sleep(250);\n  show(\"Routine delay completed\");\n}",
+      "description": "Executing async delay timers."
+    },
+    {
+      "id": 280,
+      "category": "Variables",
+      "code": "define testNumber = 77;\nshow(testNumber);",
+      "description": "Defining and rendering numerical variables."
+    },
+    {
+      "id": 281,
+      "category": "Variables",
+      "code": "define messageText = \"Processing completed\";\nshow(messageText);",
+      "description": "Defining and rendering text messages."
+    },
+    {
+      "id": 282,
+      "category": "Control Flow",
+      "code": "define flagStatus = true;\nif (flagStatus) {\n  show(\"System enabled\");\n}",
+      "description": "Evaluating execution status flags."
+    },
+    {
+      "id": 283,
+      "category": "Control Flow",
+      "code": "define indexVal = 0;\nwhile (indexVal < 1) {\n  show(\n    \"Looping single item\"\n  );\n  indexVal++;\n}",
+      "description": "Single-iteration loop block."
+    },
+    {
+      "id": 284,
+      "category": "Functions",
+      "code": "func identity(val) {\n  return val;\n}\nshow(identity(\"Test Passed\"));",
+      "description": "Identity function validation."
+    },
+    {
+      "id": 285,
+      "category": "Entities",
+      "code": "entity LogEntry {\n  init(msg) {\n    self.msg = msg;\n  }\n  getMsg() {\n    return self.msg;\n  }\n}\ndefine log = new LogEntry(\"System event logged\");\nshow(log.getMsg());",
+      "description": "Entity handling log message abstraction."
+    },
+    {
+      "id": 286,
+      "category": "Collections",
+      "code": "define listContainer = [1, 2, 3];\nshow(listContainer[0]);",
+      "description": "Accessing initial collection entries."
+    },
+    {
+      "id": 287,
+      "category": "Builtins",
+      "code": "define textCheck = includes(\"abcdef\", \"cde\");\nshow(textCheck);",
+      "description": "Verifying text substrings."
+    },
+    {
+      "id": 288,
+      "category": "Builtins",
+      "code": "define listItems = [10, 20];\npush(listItems, 30);\nshow(listItems);",
+      "description": "Pushing elements into arrays."
+    },
+    {
+      "id": 289,
+      "category": "Builtins",
+      "code": "define objMap = { id: 99 };\nshow(values(objMap));",
+      "description": "Extracting object values list."
+    },
+    {
+      "id": 290,
+      "category": "Server",
+      "code": "define serverInstance = createServer();\nserverInstance.get(\"/version\", (req, res) => {\n  res.send(\"v1.0.0\");\n});\nserverInstance.listen(3000);",
+      "description": "Version routing implementation."
+    },
+    {
+      "id": 291,
+      "category": "Database",
+      "code": "define Log = defineModel(\"Log\", {});\nLog.delete(\"log-id-1\");",
+      "description": "Database document record deletion."
+    },
+    {
+      "id": 292,
+      "category": "File System",
+      "code": "define fileExistsFlag = exists(\"notes.txt\");\nshow(fileExistsFlag);",
+      "description": "Validating file status."
+    },
+    {
+      "id": 293,
+      "category": "Utilities",
+      "code": "define generatedUuid = uuid();\nshow(generatedUuid);",
+      "description": "Generating unique identifiers."
+    },
+    {
+      "id": 294,
+      "category": "Variables",
+      "code": "define counterValue = 10;\ncounterValue += 10;\nshow(counterValue);",
+      "description": "Incrementing counter values with compound assignment."
+    },
+    {
+      "id": 295,
+      "category": "Variables",
+      "code": "define deductionValue = 20;\ndeductionValue -= 5;\nshow(deductionValue);",
+      "description": "Decrementing values with compound assignment."
+    },
+    {
+      "id": 296,
+      "category": "Control Flow",
+      "code": "define numVal = 5;\nif (numVal > 0) {\n  show(\"Positive\");\n} else {\n  show(\"Non-positive\");\n}",
+      "description": "Branching based on numerical value sign."
+    },
+    {
+      "id": 297,
+      "category": "Functions",
+      "code": "define computeSum = (a, b) => a + b;\nshow(computeSum(10, 20));",
+      "description": "Arrow function adding two arguments."
+    },
+    {
+      "id": 298,
+      "category": "Collections",
+      "code": "define dictionaryMap = { name: \"LopoLang\", type: \"Language\" };\nshow(dictionaryMap.type);",
+      "description": "Accessing map properties via dot notation."
+    },
+    {
+      "id": 299,
+      "category": "Builtins",
+      "code": "define rangeList = range(0, 5);\nshow(rangeList);",
+      "description": "Generating range arrays from zero to five."
+    },
+    {
+      "id": 300,
+      "category": "Utilities",
+      "code": "show(\"All 300 LopoLang comprehensive examples generated successfully.\");",
+      "description": "Final completion diagnostic log entry."
+    }
+  ]
+}

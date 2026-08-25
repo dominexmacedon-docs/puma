@@ -10,7 +10,7 @@ Welcome to the Puma programming language repository! If you're working with Puma
 
 To get Puma up and running on your system, grab the official installer executable from the releases page:
 
-* **Download Link**: [puma-v1.0.0.exe](https://github.com/dominexmacedon-docs/puma/releases/download/puma-v1.0.0/puma-v1.0.0.exe)
+* **Download Link**: [puma-v1.0.1.exe](https://github.com/dominexmacedon-docs/puma/releases/download/puma-v1.0.1/puma-v1.0.1.exe)
 
 
 ### A Quick Note on Opening `.pulsar` Files

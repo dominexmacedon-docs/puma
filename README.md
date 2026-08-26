@@ -1,54 +1,234 @@
 # Puma Language (`.pulsar`) Guide
 
-Welcome to the Puma programming language repository! If you're working with Puma, you'll notice our source files use the `.pulsar` extension. This guide will help you get set up, explain how to handle file associations properly, and walk you through the core syntax and features.
+Welcome to the **Puma Programming Language** repository!
+
+Puma source files use the `.pulsar` extension. This guide explains how to install Puma, configure your environment, run `.pulsar` programs, and learn the core language syntax.
 
 ---
 
-## Getting Started
+# Getting Started
 
-### Installation
+## Installation
 
-To get Puma up and running on your system, grab the official installer executable from the releases page:
-
-* **Download Link**: [puma-v1.0.1.exe](https://github.com/dominexmacedon-docs/puma/releases/download/puma-v1.0.1/puma-v1.0.1.exe)
-
-
-### A Quick Note on Opening `.pulsar` Files
-
-When you first double-click a `.pulsar` file on your computer, your OS will likely ask you what program you want to use to open it.
-
-> **Important:** When this prompt pops up, **make sure you do not check or enable the box that says "Always open with..."**. This prevents your operating system from permanently locking the `.pulsar` extension to a single text editor or viewer.
-> 
-> 
+Puma is available for Windows and Linux.
 
 ---
 
-## Language Features & Code Structure
+# Windows Installation
 
-Puma is built on custom compiler tokens and a solid Lexer/Parser layer. The evaluator core supports everything from asynchronous tasks and web routing to database models and object-oriented programming.
+Download the official installer:
 
-### Variables and Constants
+**Download:**
 
-Declare variables easily using the `define` keyword:
+https://github.com/dominexmacedon-docs/puma/releases/download/puma-v1.0.1/puma-v1.0.1.exe
+
+The installer includes:
+
+- Puma runtime
+- Compiler components
+- CLI command
+- `.pulsar` file association
+
+After installation, you can run:
+
+```bash
+puma program.pulsar
+````
+
+---
+
+# Linux Installation
+
+Puma Linux installation uses a Makefile installer.
+
+## Requirements
+
+Make sure your system has:
+
+* Node.js 22+
+* Make
+* wget
+
+Check:
+
+```bash
+node --version
+make --version
+```
+
+---
+
+## Install Puma
+
+Create a file named:
+
+```text
+Makefile
+```
+
+Add:
+
+```makefile
+PUMA_VERSION=puma-linux-v1.0.1
+PUMA_URL=https://github.com/dominexmacedon-docs/puma/releases/download/puma-linux-v1.0.1/Puma-linux-v1.0.1.tar.gz
+
+PREFIX=/usr/local
+PUMA_LIB=$(PREFIX)/lib/puma
+PUMA_BIN=$(PREFIX)/bin/puma
+
+
+.PHONY: install clean download extract setup launcher
+
+
+install: download extract setup launcher
+	@echo "Puma installed successfully"
+	@echo "Run: puma your_file.pulsar"
+
+
+download:
+	@echo "Downloading Puma..."
+	wget -O $(PUMA_VERSION).tar.gz $(PUMA_URL)
+
+
+extract:
+	@echo "Extracting Puma..."
+	rm -rf $(PUMA_VERSION)
+	tar -xzf $(PUMA_VERSION).tar.gz
+
+
+setup:
+	@echo "Installing Puma runtime..."
+
+	sudo mkdir -p $(PUMA_LIB)/.runtime
+
+	sudo cp -r \
+	$(PUMA_VERSION)/.runtime/* \
+	$(PUMA_LIB)/.runtime/
+
+
+launcher:
+	@echo "Creating global Puma command..."
+
+	sudo tee $(PUMA_BIN) > /dev/null <<'EOF'
+#!/bin/bash
+
+exec node /usr/local/lib/puma/.runtime/puma.js "$@"
+EOF
+
+	sudo chmod +x $(PUMA_BIN)
+
+
+clean:
+	rm -rf $(PUMA_VERSION)
+	rm -f $(PUMA_VERSION).tar.gz
+```
+
+Run:
+
+```bash
+make install
+```
+
+After installation:
+
+```bash
+puma hello.pulsar
+```
+
+Puma will be installed globally:
+
+```text
+/usr/local/bin/puma
+
+/usr/local/lib/puma/
+└── .runtime/
+    ├── puma.js
+    ├── lexer.js
+    ├── parser.js
+    ├── evaluator.js
+    └── node_modules/
+```
+
+---
+
+# Running Puma Programs
+
+Create:
+
+```text
+hello.pulsar
+```
+
+Example:
+
+```pulsar
+show("Hello from Puma!");
+```
+
+Run:
+
+```bash
+puma hello.pulsar
+```
+
+---
+
+# `.pulsar` File Handling
+
+When opening a `.pulsar` file for the first time, your operating system may ask which application should open it.
+
+> Important:
+>
+> Do not enable "Always open with..." unless you specifically want to permanently associate `.pulsar` files with Puma.
+
+This allows your system to keep the file association flexible.
+
+---
+
+# Language Features & Code Structure
+
+Puma uses a custom Lexer, Parser, and Evaluator architecture.
+
+The runtime supports:
+
+* Variables
+* Functions
+* Arrow functions
+* Conditions
+* Loops
+* Async tasks
+* Web servers
+* APIs
+* Entities and inheritance
+* Database models
+* Networking utilities
+
+---
+
+# Variables
+
+Use `define` to create variables:
 
 ```pulsar
 define greeting = "Hello, Puma!";
 define count = 42;
-
 ```
 
-### Printing Output (`show`)
+---
 
-To output data to your terminal or console, use the `show(...)` statement:
+# Output (`show`)
+
+Print values:
 
 ```pulsar
-show("Welcome to Puma programming language.");
-
+show("Welcome to Puma!");
 ```
 
-### Control Flow
+---
 
-Puma handles conditional logic (`if`, `else`) and loops (`while`, `for`, `for-in`) just like you'd expect:
+# Control Flow
+
+## If / Else
 
 ```pulsar
 define score = 85;
@@ -58,93 +238,226 @@ if (score >= 80) {
 } else {
     show("Keep trying!");
 }
-
-define i = 0;
-while (i < 3) {
-    show(i);
-    i++;
-}
-
-```
-
-### Functions & Arrow Syntax
-
-Functions can be defined the traditional way using `func`, or you can use concise arrow functions (`=>`):
-
-```pulsar
-func add(a, b) {
-    return a + b;
-}
-
-define multiply = (x, y) => x * y;
-
-```
-
-### Object-Oriented Programming
-
-Organize your code using `entity`, inherit from other classes with `inherits`, and initialize properties using `init`:
-
-```pulsar
-entity Animal {
-    init(name) {
-        self.name = name;
-    }
-    speak() {
-        show(self.name + " makes a noise.");
-    }
-}
-
-entity Dog inherits Animal {
-    speak() {
-        show(self.name + " barks.");
-    }
-}
-
-```
-
-### Web Servers and APIs
-
-Puma comes with built-in networking utilities like `createServer`, making it straightforward to spin up web backends, manage cookies, parse multipart file uploads, and handle WebSockets:
-
-```pulsar
-define app = createServer({ enableWebSockets: true });
-
-app.get("/", (req, res) => {
-    res.send("Hello from Puma Web Server!");
-});
-
-app.listen(3000, (port) => {
-    show("Server running on port " + port);
-});
-
 ```
 
 ---
 
-## Sample `.pulsar` Script
-
-Here is a complete, working script that puts variables, functions, conditions, and console logs together:
+## While Loop
 
 ```pulsar
-#* 
-  Sample Puma Script (.pulsar)
-  Demonstrating basic syntax features
-*#
+define i = 0;
 
-define appName = "Puma Engine";
-define version = 1.0;
-
-func getInfo(name, ver) {
-    return name + " version " + ver + " is running smoothly.";
-}
-
-define statusMessage = getInfo(appName, version);
-show(statusMessage);
-
-define numbers = [10, 20, 30, 40];
-for item in numbers {
-    if (item > 20) {
-        show("High value detected: " + item);
-    }
+while (i < 3) {
+    show(i);
+    i++;
 }
 ```
+
+---
+
+## For-In Loop
+
+```pulsar
+define numbers = [10,20,30,40];
+
+for item in numbers {
+
+    show(item);
+
+}
+```
+
+---
+
+# Functions
+
+Traditional functions:
+
+```pulsar
+func add(a, b) {
+
+    return a + b;
+
+}
+
+show(add(5,10));
+```
+
+---
+
+# Arrow Functions
+
+Short function syntax:
+
+```pulsar
+define multiply = (x,y) => x * y;
+
+show(multiply(4,5));
+```
+
+---
+
+# Object-Oriented Programming
+
+Puma supports:
+
+* `entity`
+* `inherits`
+* `init`
+* `self`
+
+Example:
+
+```pulsar
+entity Animal {
+
+    init(name) {
+
+        self.name = name;
+
+    }
+
+
+    speak() {
+
+        show(self.name + " makes a noise.");
+
+    }
+
+}
+
+
+entity Dog inherits Animal {
+
+
+    speak() {
+
+        show(self.name + " barks.");
+
+    }
+
+}
+```
+
+---
+
+# Web Servers and APIs
+
+Puma includes built-in server utilities.
+
+Example:
+
+```pulsar
+define app = createServer({
+    enableWebSockets: true
+});
+
+
+app.get("/", (req,res)=>{
+
+    res.send("Hello from Puma Web Server!");
+
+});
+
+
+app.listen(3000,(port)=>{
+
+    show("Server running on port " + port);
+
+});
+```
+
+Run:
+
+```bash
+puma server.pulsar
+```
+
+---
+
+# Complete Example
+
+`example.pulsar`
+
+```pulsar
+#*
+ Sample Puma Script
+
+ Demonstrates:
+ - Variables
+ - Functions
+ - Conditions
+ - Loops
+*#
+
+
+define appName = "Puma Engine";
+
+define version = 1.0;
+
+
+func getInfo(name, ver) {
+
+    return name + " version " + ver + " is running smoothly.";
+
+}
+
+
+define statusMessage = getInfo(appName, version);
+
+
+show(statusMessage);
+
+
+
+define numbers = [10,20,30,40];
+
+
+for item in numbers {
+
+    if (item > 20) {
+
+        show("High value detected: " + item);
+
+    }
+
+}
+```
+
+Run:
+
+```bash
+puma example.pulsar
+```
+
+---
+
+# Puma Project Structure
+
+Typical Puma installation:
+
+```text
+Puma
+│
+├── puma
+
+```
+
+The `.runtime` directory contains Puma's execution engine.
+
+Users interact with Puma through:
+
+```bash
+puma file.pulsar
+```
+
+---
+
+# Version
+
+Current version:
+
+```text
+Puma v1.0.1
+```
+

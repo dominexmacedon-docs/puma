@@ -101,19 +101,18 @@ setup:
 
 	sudo mkdir -p $(PUMA_LIB)/.runtime
 
-	sudo cp -r \
-	$(PUMA_VERSION)/.runtime/* \
-	$(PUMA_LIB)/.runtime/
+	RUNTIME_DIR=$$(find . -type d -name ".runtime" | head -n 1); \
+	if [ -z "$$RUNTIME_DIR" ]; then \
+		echo "ERROR: .runtime folder not found"; \
+		exit 1; \
+	fi; \
+	sudo cp -r $$RUNTIME_DIR/* $(PUMA_LIB)/.runtime/
 
 
 launcher:
 	@echo "Creating global Puma command..."
 
-	sudo tee $(PUMA_BIN) > /dev/null <<'EOF'
-#!/bin/bash
-
-exec node /usr/local/lib/puma/.runtime/puma.js "$@"
-EOF
+	sudo sh -c 'printf "#!/bin/bash\n\nexec node /usr/local/lib/puma/.runtime/puma.js \"\$$@\"\n" > $(PUMA_BIN)'
 
 	sudo chmod +x $(PUMA_BIN)
 

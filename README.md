@@ -20,7 +20,7 @@ Download the official installer:
 
 **Download:**
 
-https://github.com/dominexmacedon-docs/puma/releases/download/puma-v1.0.1/puma-v1.0.1.exe
+https://github.com/dominexmacedon-docs/puma/releases/download/puma-v1.0.2/puma-v1.0.2.exe
 
 The installer includes:
 
@@ -69,8 +69,8 @@ Makefile
 Add:
 
 ```makefile
-PUMA_VERSION=puma-linux-v1.0.1
-PUMA_URL=https://github.com/dominexmacedon-docs/puma/releases/download/puma-linux-v1.0.1/Puma-linux-v1.0.1.tar.gz
+PUMA_VERSION=puma-linux-v1.0.2
+PUMA_URL=https://github.com/dominexmacedon-docs/puma/releases/download/puma-linux-v1.0.2/Puma-linux-v1.0.2.tar.gz
 
 PREFIX=/usr/local
 PUMA_LIB=$(PREFIX)/lib/puma
